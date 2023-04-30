@@ -1,13 +1,21 @@
+
 <%- include('./partials/header.ejs') %>
-<a href="/notifications/new" class="btn btn-danger">add a new notif</a>
-<% for( let notif of allNotifs ) { %>
-<div>
-    body: <%= notif.body.slice(0, 5) %>..., author: <%= notif.author %>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
-        title="<%= notif.body %>">Read More</button>
-    <form action="/notifications/<%= notif._id %>?_method=DELETE" method="post">
-        <input type="submit" value="delete">
-    </form>
+<div class="col-4 m-auto mt-2">
+    <a href="/notifications/new" class="btn btn-danger">add a new notif</a>
+    <% let i = 0 %>
+    <% for( let notif of allNotifs ) { %>
+    <% i++ %>
+    
+    <div class="card my-2">
+        <h5 class="card-header">#<%= i %></h5>
+        <div class="card-body">
+            <h5 class="card-title"><%= notif.author %></h5>
+            <p class="card-text"><%= notif.body%></p>
+            <form action="/notifications/<%= notif._id %>?_method=DELETE" method="post">
+                <input class="btn btn-primary" type="submit" value="delete">
+            </form>
+        </div>
+    </div>
+    <% } %>
 </div>
-<% } %>
 <%- include('./partials/footer.ejs') %>

@@ -7,10 +7,22 @@
 </form>
 <h1>List of all jobs</h1>
 <a class="btn btn-danger" href="/jobs/new">Add a new job</a>
+
 <div class="row">
-    <% for(let job of foundJobs){ %>
-    <div class="col-4"><%= job.name %> <a class="btn btn-success" href="/jobs/<%= job._id %>">Read More</a></div>
-    <% } %>
+    <!-- <div class="m-auto"> -->
+        <% for(let job of foundJobs){ %>
+            <div class="card m-2" style="width: 18rem;">
+                <img class="card-img-top" src="<%= job.image %>" alt="Card image cap" style=" object-fit: fill;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= job.name %></h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                        content.</p>
+                    <a href="/jobs/<%= job._id %>" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        
+        <% } %>
+    </div>
 </div>
 
 <%- include('./partials/footer.ejs') %>
